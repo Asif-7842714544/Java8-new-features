@@ -1,3 +1,5 @@
+package Practice;
+
 public class Student {
     private int id;
     private String firstName;
@@ -5,6 +7,24 @@ public class Student {
     private int age;
     private String gender;
     private String departmentName;
+    private int joinedYear;
+    private String city;
+    private int rank;
+
+ //   @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", age=" + age +
+//                ", gender='" + gender + '\'' +
+//                ", departmentName='" + departmentName + '\'' +
+//                ", joinedYear=" + joinedYear +
+//                ", city='" + city + '\'' +
+//                ", rank=" + rank +
+//                '}';
+//    }
 
     public Student(int id, String firstName, String lastName, int age, String gender, String departmantName, int joinedYear, String city, int rank) {
         this.id = id;
@@ -90,7 +110,5 @@ public class Student {
         this.rank = rank;
     }
 
-    private int joinedYear;
-    private String city;
-    private int rank;
+
 }
