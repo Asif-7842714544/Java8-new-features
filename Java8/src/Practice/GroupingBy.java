@@ -17,12 +17,39 @@ public class GroupingBy {
                 new Student(8, "Nam", "Dev", 31, "Male", "Computer Engineering", 2014, "Karnataka", 433),
                 new Student(9, "Sonu", "Shankar", 27, "Female", "Computer Engineering", 2018, "Karnataka", 7),
                 new Student(10, "Shubham", "Pandey", 26, "Male", "Instrumentation Engineering", 2017, "Mumbai", 98),
-                new Student(11, "Asif", "Basha", 28, "male", "Computer Engineering", 2016, "Delhi", 7)
+                new Student(11, "Asif", "Basha", 28, "Male", "Computer Engineering", 2016, "Delhi", 13)
         );
 
+        Map<String, Long> collect6 = list.stream().collect(Collectors.groupingBy(Student::getGender, Collectors.counting()));
+        System.out.println(collect6);
+
+        String str="Test My Knowledge";
+
+        Optional<Student> first = list.stream().sorted(Comparator.comparingInt(Student::getRank)).skip(2).findFirst();
+
+        System.out.println(first.get().getFirstName());
+
+
+        System.out.println("====================================");
+        List<Student> list1 = list.stream().filter(x -> x.getAge() >= 30).toList();
+        list1.forEach(x -> System.out.println(x.getFirstName()));
+        System.out.println("====================================");
+        List<Integer> myList = Arrays.asList(10, 15, 8, 49, 25, 98, 98, 32, 15);
+        System.out.println("print distinct numbers");
+        myList.stream().distinct().forEach(System.out::print);
+        System.out.println("====================================");
+        System.out.println("find max number");
+        myList
+                .stream().max(Integer::compareTo).stream().findFirst().ifPresent(System.out::println);
+        System.out.println("====================================");
+        System.out.println("perform cube on list elements and filter numbers greater than 50");
+        myList.stream().map(i -> i * i * i).filter(i -> i >= 50).forEach(System.out::println);
+
+        System.out.println("====================================");
+        System.out.println();
         System.out.println("List of students whose name starts with letter A : ");
-        List<Student> listStudentNames = list.stream().filter(i -> i.getFirstName().startsWith("A")).collect(Collectors.toList());
-        listStudentNames.stream().forEach(i -> System.out.println(i.getFirstName()));
+        List<Student> listStudentNames = list.stream().filter(i -> i.getFirstName().startsWith("A")).toList();
+        listStudentNames.forEach(i -> System.out.println(i.getFirstName()));
         System.out.println("============================================================ ");
         System.out.println("Students grouped by the department names : ");
         Map<String, List<Student>> collect =
@@ -30,7 +57,7 @@ public class GroupingBy {
         System.out.println(collect);
         System.out.println("Max age of student : ");
         Optional<Student> maxAgeStudent = list.stream().max(Comparator.comparing(Student::getAge));
-        if (maxAgeStudent.isPresent()) System.out.println(maxAgeStudent.get().getFirstName());
+        maxAgeStudent.ifPresent(student -> System.out.println(student.getFirstName()));
 
         Student max = Collections.max(list, Comparator.comparing(Student::getAge));
 

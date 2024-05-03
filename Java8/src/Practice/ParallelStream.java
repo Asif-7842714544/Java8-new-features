@@ -22,7 +22,7 @@ public class ParallelStream {
         System.out.println("with parallel stream Execution time: " + (endtime - starttime) + " milliseconds");
 
         list.stream().distinct().forEach(System.out::print);
-
+        System.out.println();
         System.out.println("============================================================ ");
 
     }
